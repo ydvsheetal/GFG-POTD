@@ -1,0 +1,22 @@
+class Solution{
+  public:
+    /*You are required to complete this method*/
+    int maxDepth(Node *root) {
+        // Your code here
+        int ans = INT_MIN;
+        queue<pair<Node*,int>> q;
+        q.push({root,1});
+        while(!q.empty())
+        {
+            auto z = q.front();
+            q.pop();
+            int h = z.second;
+            ans = max(ans,h);
+            if(z.first->left)
+            q.push({z.first->left,h+1});
+            if(z.first->right)
+            q.push({z.first->right,h+1});
+        }
+        return ans;
+    }
+};
